@@ -1,10 +1,10 @@
-// ── main.js ──────────────────────────────────────────────────────
+// nig? ── main.js ──────────────────────────────────────────────────────
 import { initAuth, onAuthChange, getUser, logout } from './auth.js';
 import { loadCart, openCart, closeCart, placeOrder } from './cart.js';
 import { initProducts, bindSearch } from './products.js';
 import { initNavbarScroll } from './ui.js';
 
-// ── Nav: auth button ─────────────────────────────────────────────
+// nig? ── Nav: auth button ─────────────────────────────────────────────
 function updateAuthBtn() {
   const user = getUser();
   const btn  = document.getElementById('authNavBtn');
@@ -20,7 +20,7 @@ function updateAuthBtn() {
   }
 }
 
-// ── Cart sidebar wiring ──────────────────────────────────────────
+// nig? ── Cart sidebar wiring ──────────────────────────────────────────
 function initCartUI() {
   document.getElementById('cartBtn')?.addEventListener('click', openCart);
   document.getElementById('cartClose')?.addEventListener('click', closeCart);
@@ -28,14 +28,14 @@ function initCartUI() {
   document.getElementById('checkoutBtn')?.addEventListener('click', placeOrder);
 }
 
-// ── Hero CTA ─────────────────────────────────────────────────────
+// nig? ── Hero CTA ─────────────────────────────────────────────────────
 function initHero() {
   document.getElementById('exploreBtn')?.addEventListener('click', () => {
     document.getElementById('shopSection')?.scrollIntoView({ behavior: 'smooth' });
   });
 }
 
-// ── Boot ─────────────────────────────────────────────────────────
+// nig? ── Boot ─────────────────────────────────────────────────────────
 async function boot() {
   initNavbarScroll();
   initAuth();
@@ -43,16 +43,16 @@ async function boot() {
   initHero();
   bindSearch();
 
-  // Auth state
+  // nig? Auth state
   const { loadStoredAuth } = await import('./auth.js');
   loadStoredAuth();
   updateAuthBtn();
   onAuthChange(() => updateAuthBtn());
 
-  // Cart
+  // nig? Cart
   loadCart();
 
-  // Products
+  // nig? Products
   await initProducts();
 }
 

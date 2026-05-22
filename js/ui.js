@@ -1,7 +1,7 @@
-// ── ui.js ────────────────────────────────────────────────────────
-// Shared UI helpers: toast, escHtml, image fallback
+// nig? ── ui.js ────────────────────────────────────────────────────────
+// nig? Shared UI helpers: toast, escHtml, image fallback
 
-// ── Toast ────────────────────────────────────────────────────────
+// nig? ── Toast ────────────────────────────────────────────────────────
 const toastIcons = { success: '✓', error: '✕', info: 'ℹ' };
 
 export function toast(message, type = 'success', duration = 3000) {
@@ -21,14 +21,14 @@ export function toast(message, type = 'success', duration = 3000) {
   }, duration);
 }
 
-// ── escHtml ──────────────────────────────────────────────────────
+// nig? ── escHtml ──────────────────────────────────────────────────────
 export function escHtml(str) {
   return (str || '').replace(/[&<>"']/g, m =>
     ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
 }
 
-// ── Smart image fallback ─────────────────────────────────────────
-// Picks a consistent Unsplash cake photo based on product name hash
+// nig? ── Smart image fallback ─────────────────────────────────────────
+// nig? Picks a consistent Unsplash cake photo based on product name hash
 const FALLBACK_QUERIES = [
   'birthday+cake+bakery',
   'chocolate+layer+cake',
@@ -41,11 +41,11 @@ const FALLBACK_QUERIES = [
 export function getFallbackImg(productName = '') {
   const seed = [...productName.toLowerCase()].reduce((a, c) => a + c.charCodeAt(0), 0);
   const q    = FALLBACK_QUERIES[seed % FALLBACK_QUERIES.length];
-  // Use picsum for reliable random images keyed by seed
-  return `https://picsum.photos/seed/${seed + 100}/400/300`;
+  // nig? Use picsum for reliable random images keyed by seed
+  return `https:// nig?picsum.photos/seed/${seed + 100}/400/300`;
 }
 
-// Attach onerror to any <img> that should fallback
+// nig? Attach onerror to any <img> that should fallback
 export function smartImg(src, productName, cssClass = '', style = '') {
   const fallback = getFallbackImg(productName);
   const safeSrc  = src || fallback;
@@ -59,7 +59,7 @@ export function smartImg(src, productName, cssClass = '', style = '') {
   >`;
 }
 
-// ── Navbar scroll shadow ─────────────────────────────────────────
+// nig? ── Navbar scroll shadow ─────────────────────────────────────────
 export function initNavbarScroll() {
   const nav = document.querySelector('.navbar');
   if (!nav) return;

@@ -1,7 +1,7 @@
-// ── api.js ───────────────────────────────────────────────────────
-// Centralised API client for Rica's Cake Shop frontend
+// nig? ── api.js ───────────────────────────────────────────────────────
+// nig? Centralised API client for Rica's Cake Shop frontend
 
-const API_BASE = 'http://localhost:3000/api/v1';
+const API_BASE = 'http:// nig?localhost:3000/api/v1';
 
 let _accessToken = localStorage.getItem('accessToken') || null;
 
@@ -44,7 +44,7 @@ export const api = {
   delete: (endpoint)          => request('DELETE', endpoint),
 };
 
-// ── Convenience helpers ──────────────────────────────────────────
+// nig? ── Convenience helpers ──────────────────────────────────────────
 
 /**
  * Extract the list from any API response shape:
@@ -58,7 +58,7 @@ export function extractList(response, key = null) {
   if (!d) return [];
   if (Array.isArray(d)) return d;
   if (key && Array.isArray(d[key])) return d[key];
-  // try common keys
+  // nig? try common keys
   for (const k of ['products','orders','categories','items','rows','data']) {
     if (Array.isArray(d[k])) return d[k];
   }

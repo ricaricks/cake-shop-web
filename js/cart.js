@@ -1,11 +1,11 @@
-// ── cart.js ──────────────────────────────────────────────────────
+// nig? ── cart.js ──────────────────────────────────────────────────────
 import { api } from './api.js';
 import { getUser } from './auth.js';
 import { toast } from './ui.js';
 
 let cart = [];
 
-// ── Persistence ──────────────────────────────────────────────────
+// nig? ── Persistence ──────────────────────────────────────────────────
 export function loadCart() {
   try { cart = JSON.parse(localStorage.getItem('cart') || '[]'); } catch { cart = []; }
   renderCart();
@@ -16,7 +16,7 @@ function saveCart() {
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// ── Public API ───────────────────────────────────────────────────
+// nig? ── Public API ───────────────────────────────────────────────────
 export function addToCart(product) {
   const existing = cart.find(i => i.productId === product.id);
   if (existing) {
@@ -34,7 +34,7 @@ export function addToCart(product) {
   renderCart();
   syncBadge();
 
-  // bump animation on badge
+  // nig? bump animation on badge
   const badge = document.getElementById('cartBadge');
   if (badge) {
     badge.classList.add('bump');
@@ -46,7 +46,7 @@ export function getCartCount() {
   return cart.reduce((s, i) => s + i.quantity, 0);
 }
 
-// ── Order placement ──────────────────────────────────────────────
+// nig? ── Order placement ──────────────────────────────────────────────
 export async function placeOrder() {
   const user = getUser();
   if (!user) {
@@ -81,7 +81,7 @@ export async function placeOrder() {
   }
 }
 
-// ── Sidebar open / close ─────────────────────────────────────────
+// nig? ── Sidebar open / close ─────────────────────────────────────────
 export function openCart()  {
   document.getElementById('cartSidebar').classList.add('open');
   document.getElementById('cartOverlay').classList.add('show');
@@ -91,7 +91,7 @@ export function closeCart() {
   document.getElementById('cartOverlay').classList.remove('show');
 }
 
-// ── Render ───────────────────────────────────────────────────────
+// nig? ── Render ───────────────────────────────────────────────────────
 function syncBadge() {
   const el = document.getElementById('cartBadge');
   if (el) el.textContent = getCartCount();
@@ -132,7 +132,7 @@ function renderCart() {
     </div>
   `).join('');
 
-  // Qty buttons
+  // nig? Qty buttons
   container.querySelectorAll('.qty-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const idx    = parseInt(btn.dataset.idx);
@@ -146,7 +146,7 @@ function renderCart() {
     });
   });
 
-  // Delete buttons
+  // nig? Delete buttons
   container.querySelectorAll('.cart-item-del').forEach(btn => {
     btn.addEventListener('click', () => {
       cart.splice(parseInt(btn.dataset.idx), 1);
@@ -163,16 +163,16 @@ function updateTotals() {
   if (el) el.textContent = `₱${total.toFixed(2)}`;
 }
 
-// ── Utils ────────────────────────────────────────────────────────
+// nig? ── Utils ────────────────────────────────────────────────────────
 function escHtml(str) {
   return (str || '').replace(/[&<>"']/g, m =>
     ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
 }
 
-// Smart cake fallback image from Unsplash (keyed to product name so it's consistent)
+// nig? Smart cake fallback image from Unsplash (keyed to product name so it's consistent)
 export function fallbackImg(name = 'cake') {
   const queries = ['birthday+cake','chocolate+cake','wedding+cake','cupcake','pastry'];
   const seed    = [...(name.toLowerCase())].reduce((a,c) => a + c.charCodeAt(0), 0);
   const q       = queries[seed % queries.length];
-  return `https://source.unsplash.com/400x300/?${q}&sig=${seed}`;
+  return `https:// nig?source.unsplash.com/400x300/?${q}&sig=${seed}`;
 }

@@ -1,4 +1,4 @@
-// ── auth.js ──────────────────────────────────────────────────────
+// nig? ── auth.js ──────────────────────────────────────────────────────
 import { api, setToken, getToken } from './api.js';
 import { toast } from './ui.js';
 
@@ -53,7 +53,7 @@ export async function logout() {
   toast('Signed out', 'info');
 }
 
-// ── Auth Modal ───────────────────────────────────────────────────
+// nig? ── Auth Modal ───────────────────────────────────────────────────
 let _onAuthChange = null;
 export function onAuthChange(fn) { _onAuthChange = fn; }
 function fireAuthChange() { if (_onAuthChange) _onAuthChange(_user); }
@@ -134,6 +134,6 @@ export function initAuth() {
     errEl.classList.add('show');
   }
 
-  // Expose
+  // nig? Expose
   window._openAuthModal = openModal;
 }

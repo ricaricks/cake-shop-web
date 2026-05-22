@@ -1,4 +1,4 @@
-// ── products.js ──────────────────────────────────────────────────
+// nig? ── products.js ──────────────────────────────────────────────────
 import { api, extractList } from './api.js';
 import { addToCart }        from './cart.js';
 import { escHtml, smartImg, getFallbackImg, toast } from './ui.js';
@@ -7,13 +7,13 @@ let allProducts  = [];
 let categories   = [];
 let activeFilter = 'all';
 
-// ── Bootstrap ────────────────────────────────────────────────────
+// nig? ── Bootstrap ────────────────────────────────────────────────────
 export async function initProducts() {
   renderSkeleton();
   await Promise.all([loadCategories(), loadProducts()]);
 }
 
-// ── Loaders ──────────────────────────────────────────────────────
+// nig? ── Loaders ──────────────────────────────────────────────────────
 async function loadCategories() {
   try {
     const res  = await api.get('/categories');
@@ -29,7 +29,7 @@ async function loadProducts(search = '') {
     if (search) params.search = search;
 
     const res = await api.get('/products', params);
-    // extractList handles all response shapes
+    // nig? extractList handles all response shapes
     allProducts = extractList(res, 'products');
     renderProducts();
   } catch (err) {
@@ -37,7 +37,7 @@ async function loadProducts(search = '') {
   }
 }
 
-// ── Render: filter chips ─────────────────────────────────────────
+// nig? ── Render: filter chips ─────────────────────────────────────────
 function renderFilters() {
   const bar = document.getElementById('filterBar');
   if (!bar) return;
@@ -58,14 +58,14 @@ function renderFilters() {
   });
 }
 
-// ── Render: product grid ─────────────────────────────────────────
+// nig? ── Render: product grid ─────────────────────────────────────────
 function renderProducts() {
   const grid = document.getElementById('productsGrid');
   if (!grid) return;
 
   let list = allProducts;
 
-  // filter by category
+  // nig? filter by category
   if (activeFilter !== 'all') {
     list = list.filter(p => {
       const cat = p.category || p.Category || {};
@@ -74,7 +74,7 @@ function renderProducts() {
     });
   }
 
-  // filter inactive
+  // nig? filter inactive
   list = list.filter(p => p.isActive !== false);
 
   if (!list.length) {
@@ -89,7 +89,7 @@ function renderProducts() {
 
   grid.innerHTML = list.map(prod => productCard(prod)).join('');
 
-  // Add-to-cart listeners
+  // nig? Add-to-cart listeners
   grid.querySelectorAll('.btn-atc').forEach(btn => {
     btn.addEventListener('click', e => {
       e.stopPropagation();
@@ -103,7 +103,7 @@ function renderProducts() {
   });
 }
 
-// ── Card template ────────────────────────────────────────────────
+// nig? ── Card template ────────────────────────────────────────────────
 function productCard(p) {
   const catName  = (p.category || p.Category || {}).name || '';
   const price    = parseFloat(p.price || 0);
@@ -135,7 +135,7 @@ function productCard(p) {
   </article>`;
 }
 
-// ── Skeleton / Error states ───────────────────────────────────────
+// nig? ── Skeleton / Error states ───────────────────────────────────────
 function renderSkeleton() {
   const grid = document.getElementById('productsGrid');
   if (!grid) return;
@@ -158,7 +158,7 @@ function renderError(msg = '') {
     </div>`;
 }
 
-// ── Search binding ───────────────────────────────────────────────
+// nig? ── Search binding ───────────────────────────────────────────────
 export function bindSearch() {
   const input = document.getElementById('searchInput');
   const btn   = document.getElementById('searchBtn');
