@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Rica's Cake Shop — Artisanal Delights</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ── NAVBAR ──────────────────────────────────────────────────── -->
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a class="logo" href="#">Rica's <em>Cake Shop</em> 🍰</a>
+
+    <div class="nav-links">
+      <button class="nav-link" id="authNavBtn">Sign In</button>
+
+      <!-- Search -->
+      <div style="display:flex;align-items:center;gap:6px">
+        <input id="searchInput" type="search" placeholder="Search cakes…"
+          style="padding:8px 16px;border:1.5px solid rgba(61,35,20,.15);border-radius:999px;
+                 font-family:var(--font-body);font-size:.88rem;background:var(--cream);
+                 color:var(--choc);outline:none;width:180px;transition:.2s"
+          onfocus="this.style.borderColor='var(--coral)'"
+          onblur="this.style.borderColor='rgba(61,35,20,.15)'">
+        <button id="searchBtn" class="btn btn-ghost" style="padding:8px 16px;font-size:.85rem">Go</button>
+      </div>
+
+      <!-- Cart -->
+      <button class="cart-btn" id="cartBtn" title="Your cart">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <div class="hero-eyebrow">🎂 Freshly Baked Daily</div>
+      <h1>Handcrafted<br><em>Moments of Joy</em></h1>
+      <p>Artisanal cakes made with love &amp; premium ingredients.<br>Order online &amp; indulge yourself.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn btn-primary" id="exploreBtn">Explore Collection →</button>
+      </div>
+    </div>
+    <div class="hero-emoji">🧁🍰<br>🎂✨</div>
+  </div>
+</section>
+
+<!-- ── SHOP ─────────────────────────────────────────────────────── -->
+<main class="container" id="shopSection">
+
+  <div class="section-head" style="margin-top:48px">
+    <h2 class="section-title">Signature <span>Creations</span></h2>
+  </div>
+
+  <!-- Category filter chips -->
+  <div class="filter-bar" id="filterBar">
+    <button class="chip active" data-id="all">All Cakes</button>
+  </div>
+
+  <!-- Products grid -->
+  <div class="products-grid" id="productsGrid">
+    <!-- Populated by products.js -->
+  </div>
+
+</main>
+
+<!-- ── FOOTER ───────────────────────────────────────────────────── -->
+<footer>
+  <div><strong>Rica's Cake Shop</strong></div>
+  <div style="margin-top:8px">Freshly baked happiness, delivered with love. © 2025</div>
+</footer>
+
+<!-- ── CART OVERLAY + SIDEBAR ───────────────────────────────────── -->
+<div class="cart-overlay" id="cartOverlay"></div>
+
+<aside class="cart-sidebar" id="cartSidebar">
+  <div class="cart-head">
+    <h3>Your Sweets Box 🛒</h3>
+    <button class="cart-close" id="cartClose" title="Close">✕</button>
+  </div>
+
+  <div class="cart-items" id="cartItems">
+    <!-- Populated by cart.js -->
+  </div>
+
+  <div class="cart-foot">
+    <div class="cart-subtotal">
+      <span>Total</span>
+      <strong id="cartTotal">₱0.00</strong>
+    </div>
+    <button class="btn btn-primary" id="checkoutBtn" style="width:100%">
+      Place Order 🎂
+    </button>
+  </div>
+</aside>
+
+<!-- ── AUTH MODAL ───────────────────────────────────────────────── -->
+<div class="modal-overlay" id="authModal">
+  <div class="auth-modal">
+    <h2 class="auth-title" id="authTitle">Welcome back</h2>
+    <p class="auth-sub" id="authSub">Sign in to your account</p>
+
+    <div id="authErr" class="auth-error"></div>
+
+    <div class="form-group" id="nameGroup" style="display:none">
+      <label>Full Name</label>
+      <input id="authName" class="form-control" type="text" placeholder="Your name">
+    </div>
+
+    <div class="form-group">
+      <label>Email Address</label>
+      <input id="authEmail" class="form-control" type="email" placeholder="you@email.com">
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input id="authPassword" class="form-control" type="password" placeholder="••••••••">
+    </div>
+
+    <button id="authSubmit" class="btn btn-primary" style="width:100%;margin-top:8px">Sign In</button>
+
+    <div class="auth-toggle">
+      Don't have an account? <a id="authToggleLink">Create an account</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── TOAST CONTAINER ──────────────────────────────────────────── -->
+<div id="toastContainer"></div>
+
+<!-- ── JS (ES modules) ──────────────────────────────────────────── -->
+<script type="module" src="js/main.js"></script>
+
+</body>
+</html>
